@@ -1,0 +1,391 @@
+:root {
+    --input-background: #EBEBEB;
+    --input-placeholder-text: #30384C;
+    --text-color: #898989;
+    --video-text-color: #C2C2C2;
+    --border-color: #F1F1F1;
+    --background-color: rgba(0, 0, 0, 0.3);
+    --accent-color: #FF0000;
+    --accent-text-color: #FFFFFF;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: "Muli", sans-serif;
+}
+
+@font-face {
+    font-family: "Muli";
+    src: url("assets/fonts/Muli.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-areas: "header header"
+                         "sidebar main";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+    min-width: 320px;
+    overflow-x: hidden;
+}
+
+button {
+    cursor: pointer;
+}
+
+/*Header*/
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4em;
+}
+
+.header__logo-container {
+    display: flex;
+    gap: 1em;
+}
+
+.header__logo-container button {
+    background-color: transparent;
+    border: none;
+}
+
+.header__search-container {
+    display: inline-block;
+    position: relative;
+}
+
+.header__search-container--search-input {
+    width: 100%;
+    border: none;
+    border-radius: 22px;
+    background-color: var(--input-background);
+    padding: 1em 2em;
+    position: relative;
+    margin-left: 3em;
+}
+
+.header__search-container--search-input::placeholder {
+    color: var(--input-placeholder-text);
+    opacity: 0.5;
+}
+
+.header__search-container--search-button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+.header__user-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 3.75em;
+}
+
+.header__user-container button {
+    background-color: transparent;
+    border: none;
+}
+
+.header__user-container--bell-button {
+    position: relative;
+}
+
+.header__user-container--bell-button--count {
+    position: absolute;
+    top: 0;
+    left: 1.25em;
+    background-color: var(--accent-color);
+    color: var(--accent-text-color);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    width: 18px;
+    height: 18px;
+}
+
+/*Side bar, Subscriptions*/
+.menu__sidebar {
+    grid-area: sidebar;
+}
+
+.menu__sidebar, .subscriptions, .settings {
+    max-width: 250px;
+}
+
+.menu__sidebar, .menu__sidebar__group, .subscriptions, .settings {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu__sidebar__group a, .subscriptions a, .settings a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    margin: 0.8em 0 1em 2em;
+}
+
+.menu__sidebar__group img, .settings img {
+    margin-right: 1.2em;
+    width: 20px;
+    height: 20px;
+}
+
+.menu__sidebar__group__show-more-button {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    margin: 0.5em 2em;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.menu__sidebar__group a.menu__sidebar__active {
+    color: var(--accent-color);
+}
+
+.menu__sidebar__group > :last-child {
+    margin-bottom: 1.1em;
+}
+
+.subscriptions h3 {
+    margin-left: 2em;
+    margin-top: 2em;
+}
+
+.subscriptions img {
+    margin-right: 1.2em;
+    width: 26px;
+    height: 26px;
+}
+
+.settings {
+    margin-top: 2.5em;
+}
+
+/*Main*/
+
+.main {
+    grid-area: main;
+    margin: 1em;
+    max-width: 80vw;
+}
+
+/*Sections*/
+.main__section--author--container,
+.main__section--category--container {
+    display: flex;
+    align-items: center;
+    gap: 0.625em;
+}
+
+.main__section--author-wrap,
+.main__section--recommended-wrap,
+.main__section--category-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1510px;
+}
+
+.main__section--recommended-wrap,
+.main__section--category-wrap {
+    margin-top: 2.75em;
+}
+
+.main__section--category--container p {
+    color: var(--video-text-color);
+}
+
+.main__section--author--container img {
+    width: 50px;
+    height: 50px;
+}
+
+.main__section--author--buttons,
+.main__section--recommended--buttons,
+.main__section--category--buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5em;
+}
+
+.main__section--author--buttons button,
+.main__section--recommended--buttons button,
+.main__section--category--buttons button {
+    background-color: transparent;
+    border: none;
+}
+
+.main__section--category--buttons button:first-of-type {
+    background-color: var(--accent-color);
+    margin-right: 3em;
+    color: var(--accent-text-color);
+    border-radius: 20px;
+    padding: 1em;
+}
+
+.main__section--author--video-container,
+.main__section--recommended--video-container,
+.main__section--category--video-container {
+    display: flex;
+    gap: 2rem;
+    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+}
+
+.main__section--author--video-container--video,
+.main__section--recommended--video-container--video,
+.main__section--category--video-container--video {
+    position: relative;
+    cursor: pointer;
+}
+
+.main__section--author--video-container--video p,
+.main__section--recommended--video-container--video p,
+.main__section--category--video-container--video p {
+    margin: 0;
+}
+
+.main__section--author--video-container--video--duration,
+.main__section--recommended--video-container--video--duration,
+.main__section--category--video-container--video--duration {
+    display: flex;
+    justify-content: center;
+    color: var(--accent-text-color);
+    font-size: 0.875rem;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    padding: 0.25em;
+    width: 47px;
+    position: absolute;
+    right: 0.5rem;
+    top: 7rem;
+}
+
+.main__section--recommended--video-container--video--duration {
+    top: 13rem;
+}
+
+.main__section--author__video-container--video--info,
+.main__section--category--video-container--video--info {
+    display: flex;
+    justify-content: space-between;
+    color: var(--video-text-color);
+    font-size: 0.8rem;
+}
+
+/*Media*/
+@media screen and (max-width: 576px) {
+    .header {
+        padding: 0.4em;
+    }
+
+    body {
+        display: block;
+    }
+
+    .menu__sidebar__group a,
+    .menu__sidebar__group button,
+    .subscriptions,
+    .settings,
+    .main__section--recommended,
+    .main__section--category,
+    .main__section--author-wrap {
+        display: none;
+    }
+
+    .menu__sidebar {
+        flex-direction: row;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        max-height: 60px;
+        z-index: 111;
+    }
+
+    .main__section--author--video-container {
+        flex-direction: column;
+    }
+
+    .main__section--author--video-container--video img {
+        width: 100%;
+    }
+
+    .main__section--author--video-container--video:last-child {
+        margin-bottom: 5rem;
+    }
+
+    .main__section--author--video-container--video--duration {
+        top: 8rem;
+    }
+
+    .menu__sidebar__group {
+        flex-direction: row;
+        justify-content: space-evenly;
+        background-color: var(--accent-text-color);
+        border-top: 1px solid var(--border-color);
+        z-index: 999;
+    }
+
+    .menu__sidebar__group a[href="#"],
+    .menu__sidebar__group a[href="#trending"],
+    .menu__sidebar__group a[href="#subscriptions"],
+    .menu__sidebar__group a[href="#library"] {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        margin: 1em;
+    }
+
+    .menu__sidebar__group a[href="#"] img,
+    .menu__sidebar__group a[href="#trending"] img,
+    .menu__sidebar__group a[href="#subscriptions"] img,
+    .menu__sidebar__group a[href="#library"] img {
+        margin: 0;
+    }
+
+    .main__section--author {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1140px) {
+    .header__search-container--search-input {
+        width: 830px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .header__logo-container--menu-button,
+    .header__search-container--search-input,
+    .header__user-container button:not(:last-child) {
+        display: none;
+    }
+
+    .header__search-container {
+        width: 0;
+    }
+
+    .header__search-container--search-button {
+        position: static;
+    }
+}
