@@ -153,8 +153,9 @@ button {
     color: var(--accent-color);
 }
 
+.menu__sidebar__group a[href="#subscriptions"],
 .menu__sidebar__group > :last-child {
-    margin-bottom: 1.1em;
+    padding-bottom: 1.1em;
 }
 
 .subscriptions h3 {
@@ -343,16 +344,13 @@ button {
         top: 6rem;
     }
 
-    .menu {
-        display: flex;
-    }
-
     .menu__sidebar {
         display: flex;
         width: 100%;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        background-color: var(--accent-text-color);
+        border-top: 1px solid var(--border-color);
         position: fixed;
         bottom: 0;
         z-index: 999;
@@ -362,15 +360,13 @@ button {
         display: flex;
         flex: 1;
         flex-direction: row;
-        background-color: var(--accent-text-color);
-        border-top: 1px solid var(--border-color);
     }
 
     .menu__sidebar__active a,
     .menu__sidebar__group a[href="#"],
     .menu__sidebar__group a[href="#trending"],
     .menu__sidebar__group a[href="#subscriptions"],
-    .menu__sidebar__group a[href="#library"] {
+    .menu__sidebar__group a[href="#library"]:nth-of-type(4) {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -383,7 +379,7 @@ button {
     .menu__sidebar__group a[href="#"] img,
     .menu__sidebar__group a[href="#trending"] img,
     .menu__sidebar__group a[href="#subscriptions"] img,
-    .menu__sidebar__group a[href="#library"] img {
+    .menu__sidebar__group a[href="#library"]:nth-of-type(4) img {
         margin: 0;
     }
 
@@ -393,8 +389,12 @@ button {
     }
 }
 
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 576px) {
     .header__search-container--search-input {
         width: 830px;
+    }
+
+    .menu__sidebar__group a[href="#library"]:nth-of-type(4) {
+        display: none;
     }
 }
