@@ -1,5 +1,5 @@
 :root {
-    --input-background: #EBEBEB;
+    --input-background: rgba(235, 235, 235, 0.3);
     --input-placeholder-text: #30384C;
     --text-color: #898989;
     --video-text-color: #C2C2C2;
@@ -46,11 +46,14 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 1.4em;
+    width: 100vw;
 }
 
 .header__logo-container {
     display: flex;
     gap: 1em;
+    flex-basis: 100%;
+    max-width: 1050px;
 }
 
 .header__logo-container button {
@@ -59,8 +62,10 @@ button {
 }
 
 .header__search-container {
-    display: inline-block;
+    width: 100%;
+    display: flex;
     position: relative;
+    margin-left: 2.5em;
 }
 
 .header__search-container--search-input {
@@ -70,7 +75,6 @@ button {
     background-color: var(--input-background);
     padding: 1em 2em;
     position: relative;
-    margin-left: 3em;
 }
 
 .header__search-container--search-input::placeholder {
@@ -89,7 +93,8 @@ button {
 .header__user-container {
     display: flex;
     justify-content: space-between;
-    gap: 3.75em;
+    gap: 2.5em;
+    margin-right: 2em;
 }
 
 .header__user-container button {
@@ -131,6 +136,14 @@ button {
     margin: 0.8em 0 1em 2em;
 }
 
+.subscriptions a {
+    margin: 0 0 1.5em 2em;
+}
+
+.settings a {
+    margin: 2em 0 0 2em;
+}
+
 .menu__sidebar__group img, .settings img {
     margin-right: 1.2em;
     width: 20px;
@@ -160,24 +173,24 @@ button {
 
 .subscriptions h3 {
     margin-left: 2em;
-    margin-top: 2em;
+    margin-top: 0.8em;
 }
 
 .subscriptions img {
-    margin-right: 1.2em;
+    margin-right: 0.5em;
     width: 26px;
     height: 26px;
 }
 
 .settings {
-    margin-top: 2.5em;
+    margin: 2.5em 0;
 }
 
 /*Main*/
 
 .main {
     grid-area: main;
-    margin: 1em;
+    margin-top: 1em;
     max-width: 80vw;
 }
 
@@ -186,7 +199,7 @@ button {
 .main__section--category--container {
     display: flex;
     align-items: center;
-    gap: 0.625em;
+    gap: 1.5em;
 }
 
 .main__section--author-wrap,
@@ -198,9 +211,8 @@ button {
     max-width: 1510px;
 }
 
-.main__section--recommended-wrap,
 .main__section--category-wrap {
-    margin-top: 2.75em;
+    margin-top: 2.5em;
 }
 
 .main__section--category--container p {
@@ -229,10 +241,11 @@ button {
 
 .main__section--category--buttons button:first-of-type {
     background-color: var(--accent-color);
-    margin-right: 3em;
+    margin-right: 1em;
     color: var(--accent-text-color);
     border-radius: 20px;
     padding: 1em;
+    width: 160px;
 }
 
 .main__section--author--video-container,
@@ -243,7 +256,6 @@ button {
     overflow: scroll;
     overflow-y: hidden;
     overflow-x: hidden;
-
 }
 
 .main__section--author--video-container--video,
@@ -256,9 +268,8 @@ button {
 .main__section--author--video-container--video p,
 .main__section--recommended--video-container--video p,
 .main__section--category--video-container--video p {
-    margin: 0;
+    margin: 1em 0 0 0;
 }
-
 .main__section--author--video-container--video--duration,
 .main__section--recommended--video-container--video--duration,
 .main__section--category--video-container--video--duration {
@@ -298,6 +309,10 @@ button {
         padding: 0.2em 0.625em 0 0.625em;
     }
 
+    .header__user-container {
+        margin-right: 0;
+    }
+
     .header__logo-container--menu-button,
     .header__search-container--search-input,
     .header__user-container button:not(:last-child) {
@@ -310,11 +325,10 @@ button {
 
     .header__search-container--search-button {
         top: 0.2em;
-        left: 5.375em;
+        left: 2em;
     }
 
-    .menu__sidebar__group a,
-    .menu__sidebar__group button,
+    .menu__sidebar__group:last-child,
     .subscriptions,
     .settings,
     .main__section--recommended,
@@ -325,6 +339,7 @@ button {
 
     .main {
         max-width: 100vw;
+        margin: 0 1em 0 1em;
     }
 
     .main__section--author--video-container {
@@ -333,7 +348,11 @@ button {
 
     .main__section--author--video-container--video img {
         width: 100%;
-        height: 22vh;
+        height: 20vh;
+    }
+
+    .main__section--author--video-container--video p {
+        margin: 0;
     }
 
     .main__section--author--video-container--video:last-child {
@@ -341,7 +360,7 @@ button {
     }
 
     .main__section--author--video-container--video--duration {
-        top: 6rem;
+        top: 7rem;
     }
 
     .menu__sidebar {
@@ -390,11 +409,27 @@ button {
 }
 
 @media screen and (min-width: 576px) {
-    .header__search-container--search-input {
-        width: 830px;
+    .menu__sidebar__group a[href="#library"]:nth-of-type(4) {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .header__user-container {
+        gap: 0.5em;
+        margin-right: 0;
     }
 
-    .menu__sidebar__group a[href="#library"]:nth-of-type(4) {
+    .main__section--author-wrap,
+    .main__section--recommended-wrap,
+    .main__section--category-wrap {
+        justify-content: flex-start;
+        gap: 1em;
+    }
+
+    .main__section--category--buttons button:first-of-type,
+    .main__section--category--container p {
         display: none;
     }
 }
